@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Opdracht2</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ <!-- Request styles -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <header class=" jumbotron bg-warning">
+      <h1>Opdracht2</h1>
+  </header>
+  <div class="row mx-auto p-1">
+    <form action="/cgi-bin/GET_JSON.cgi" method="POST">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" name="name" id="name" required />
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" class="form-control" name="age" id="age" required />
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <span class="border border-warning">
+      <div class="row mx-auto p-1">
+          <table id="PersoonTable" class="table table-dark table-striped">
+              <thead>
+                  <tr>
+                    <th>Firstname</th>
+                    <th>Age</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+          </table>
+        </div>
+  </span> 
+
+  <footer>
+  </footer>
+  </div>
+</body>
+<script>
+  fetch('persoon.json')
+  .then(response => {
+    return response.json()
+  })
+  .then(data => {
+    console.log(data)
+    MakeTable(data)
+  })
+  .catch(err => {
+    // Do something for an error here
+  })
+
+  function MakeTable(pData)
+  {
+    var Tabel=document.getElementById("PersoonTable");
+    pData.forEach(function(data) {
+      var TableItem = document.createElement("tr");
+      var name = document.createElement("th");    
+      name.innerHTML =data.Name;
+      var age = document.createElement("th");   
+      age.innerHTML =data.Age;
+      var timestamp = document.createElement("th");       
+      timestamp.innerHTML =data.Timestamp;
+      TableItem.appendChild(name);
+      TableItem.appendChild(age);
+      TableItem.appendChild(timestamp);
+      Tabel.appendChild(TableItem);
+    });   
+  }
+</script>
+</html>
+

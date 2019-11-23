@@ -1,0 +1,3 @@
+/home/pi/labo/opdracht2/build/CMakeFiles/rebuild_cache.dir
+/home/pi/labo/opdracht2/build/CMakeFiles/edit_cache.dir
+/home/pi/labo/opdracht2/build/CMakeFiles/GET_JSON.cgi.dir

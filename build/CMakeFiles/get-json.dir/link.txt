@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/get-json.dir/GET_JSON.c.o  -o get-json -rdynamic 
